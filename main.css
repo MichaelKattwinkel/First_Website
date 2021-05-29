@@ -8,27 +8,51 @@ body {
     color: #ffffff;
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKJeKF7CTF422wJ0z-Ek63NceV-_3ZbwPfjsyH-i-mVHpHoXNUzlWFm_RtJysSLHTFalU&usqp=CAU);
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 200%;
   }
-  
-  
+
+/*Top Bar*/
+#logo{
+    float: left;
+    padding: 10px;
+    
+}  
   
 .top-bar h1{
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     font-size: 3em;
-    padding: 1px;
+    padding: 5px;
     margin: 1px;
+    float: left;
+    position: relative;
+    left: 7px;
+}
+    
+#quote{
+    position: relative;
+    left: 30%;
 }
 
-.top-bar h2{
-    font-size: 1.8em;
-    margin: 1px;
-}
+
 
 .top-bar{
     padding: 0px;
+    margin: 0px;
+    width: 100%;
     border-bottom: 3px groove rgb(230, 130, 0);
-    /*background-color: black;*/
-}
+    position: fixed;
+    top:0;
+    z-index: 5;
+    background-color: black;
+    }
 
+
+/*Main section*/
+
+.main-viewport{
+    width: 100%;
+    position: relative;
+    top: 100px;
+    left: 5%;
+}
