@@ -1,0 +1,34 @@
+body {
+    font-size: 100%;
+
+}
+
+
+.dark-theme {
+    color: #ffffff;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKJeKF7CTF422wJ0z-Ek63NceV-_3ZbwPfjsyH-i-mVHpHoXNUzlWFm_RtJysSLHTFalU&usqp=CAU);
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  
+  
+  
+.top-bar h1{
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 3em;
+    padding: 1px;
+    margin: 1px;
+}
+
+.top-bar h2{
+    font-size: 1.8em;
+    margin: 1px;
+}
+
+.top-bar{
+    padding: 0px;
+    border-bottom: 3px groove rgb(230, 130, 0);
+    /*background-color: black;*/
+}
+
