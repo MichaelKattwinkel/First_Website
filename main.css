@@ -90,6 +90,9 @@ body {
     width: 50px;
 }
 
+.add-form span{
+    white-space: nowrap;
+}
 
 
 .add-form textarea{
