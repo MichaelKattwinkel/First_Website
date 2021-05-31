@@ -7,31 +7,40 @@ body {
 .dark-theme {
     color: #ffffff;
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKJeKF7CTF422wJ0z-Ek63NceV-_3ZbwPfjsyH-i-mVHpHoXNUzlWFm_RtJysSLHTFalU&usqp=CAU);
-    background-repeat: no-repeat;
-    background-size: 200%;
+    background-repeat: repeat;
+    background-size: 550px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
 /*Top Bar*/
 #logo{
     float: left;
-    padding: 10px;
+    padding: 1vh;
+    height: 8vh;
+    width: 12vh;
     
 }  
   
-.top-bar h1{
+.top-bar h1{ /*Title*/
     font-family: 'Playfair Display', serif;
     font-weight: 700;
-    font-size: 3em;
-    padding: 5px;
-    margin: 1px;
+    font-size: 5vh;
+    padding: 1vh;
+    margin: 0px;
     float: left;
     position: relative;
     left: 7px;
 }
     
 #quote{
-    position: relative;
-    left: 30%;
+    position: absolute;
+    right: 5vw;
+    font-size: 2vh;
+}
+
+#quote cite{
+    position: absolute;
+    right: 3vw;
 }
 
 
@@ -43,6 +52,7 @@ body {
     border-bottom: 3px groove rgb(230, 130, 0);
     position: fixed;
     top:0;
+    left:0;
     z-index: 5;
     background-color: black;
     }
@@ -51,8 +61,51 @@ body {
 /*Main section*/
 
 .main-viewport{
-    width: 100%;
+    width: 95%;
     position: relative;
     top: 100px;
     left: 5%;
+    border: 3px white;
 }
+
+.your-verses{
+    float: top;
+}
+
+
+
+.add-form input, select, textarea, button, select *{
+    background-color: transparent;
+    border-color: rgb(230, 130, 0);
+    border-width: 2px;
+    color: white;
+    padding: 7px;
+    margin: 10px;
+}
+#Version *, #Book *{
+    background-color: black;
+    }
+
+.add-form input{
+    width: 50px;
+}
+
+
+
+.add-form textarea{
+    width: 400px;
+    height: 200px;
+}
+
+
+
+
+
+
+/*Responsive web design*/
+@media only screen and (max-width: 1000px) {
+    #quote *{
+        position: absolute;
+        left: -2000px;
+    }
+  }
