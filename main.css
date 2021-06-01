@@ -76,26 +76,21 @@ body {
     width: max-content;
     position: relative;
     top: 10vh;
-    /*
+    display: flex;
+    flex-direction: column;
     
-    position: relative;
-    top: 10vh;
-    left: 5%;
-    border: 3px white;
-    */
 }
 .your-verses, .add-verses{
     width: max-content;
 }
+/* Your verses section
+**********************************************************************
+*/
 
 
 
-.your-verses{
-    float: top;
-}
-
-
-
+/*Add verses section
+***********************************************************************/
 .add-form input, select, textarea, button, select *{
     background-color: transparent;
     border-color: rgb(230, 130, 0);
