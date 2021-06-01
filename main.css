@@ -22,7 +22,7 @@ body {
 /*Top Bar
 *******************************************************************
 */
-#logo{
+.top-bar img{
     float: left;
     padding: 1vh;
     height: 10vh;
@@ -73,7 +73,8 @@ body {
 
 .main-viewport{
     margin: 0 auto;
-    width: max-content;
+    width: 800px;
+    width: 85%;
     position: relative;
     top: 10vh;
     display: flex;
@@ -81,16 +82,17 @@ body {
     gap: 30px;
     
 }
-.your-verses, .add-verses{
-    width: 1000px;
-}
+/* .your-verses, .add-verses{
+    max-width: 1000px;
+    width: 85%;
+} */
 /* Your verses section
 **********************************************************************
 */
 .verse-grid{
     display: grid;
     grid-auto-rows: fr fr fr fr;
-    row-gap: 10px;
+    row-gap: 20px;
 }
 
 .verse-item{
@@ -140,7 +142,7 @@ body {
 }
 
 .add-form textarea{
-    width: 400px;
+    width: 90%;
     height: 200px;
 }
 
@@ -155,13 +157,14 @@ body {
         position: absolute;
         left: -2000px;
     }
-    .main-viewport{
-        width: 90vw;
-    }
-  }
+}
 
-  @media only screen and (max-width: 1000px) {
-    .your-verses, .add-verses{
-        width: 100%;
+@media only screen and (max-width: 500px) {
+    .top-bar img{
+        height: 15vw;
+        width: 20vw;
     }
-  }
+    .top-bar h1{
+        width: 70vw;
+        font-size: 7vw;
+    }
