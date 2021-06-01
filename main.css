@@ -1,3 +1,10 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     font-size: 100%;
 
@@ -12,12 +19,14 @@ body {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
-/*Top Bar*/
+/*Top Bar
+*******************************************************************
+*/
 #logo{
     float: left;
     padding: 1vh;
-    height: 8vh;
-    width: 12vh;
+    height: 10vh;
+    width: 14vh;
     
 }  
   
@@ -58,15 +67,28 @@ body {
     }
 
 
-/*Main section*/
+/*Main section
+***********************************************************************
+*/
 
 .main-viewport{
-    width: 95%;
+    margin: 0 auto;
+    width: max-content;
     position: relative;
-    top: 100px;
+    top: 10vh;
+    /*
+    
+    position: relative;
+    top: 10vh;
     left: 5%;
     border: 3px white;
+    */
 }
+.your-verses, .add-verses{
+    width: max-content;
+}
+
+
 
 .your-verses{
     float: top;
@@ -87,13 +109,24 @@ body {
     }
 
 .add-form input{
-    width: 50px;
+    width: 40px;
 }
 
 .add-form span{
     white-space: nowrap;
 }
 
+#middle-dash{
+    padding: 0;
+}
+
+#Verse{
+    margin-right: 0px;
+}
+
+#dash{
+    margin-left: 0px;
+}
 
 .add-form textarea{
     width: 400px;
@@ -110,5 +143,14 @@ body {
     #quote *{
         position: absolute;
         left: -2000px;
+    }
+    .main-viewport{
+        width: 90vw;
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .your-verses, .add-verses{
+        width: 100%;
     }
   }
