@@ -78,16 +78,32 @@ body {
     top: 10vh;
     display: flex;
     flex-direction: column;
+    gap: 30px;
     
 }
 .your-verses, .add-verses{
-    width: max-content;
+    width: 1000px;
 }
 /* Your verses section
 **********************************************************************
 */
+.verse-grid{
+    display: grid;
+    grid-auto-rows: fr fr fr fr;
+    row-gap: 10px;
+}
 
+.verse-item{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    column-gap: 10px;
+  
+}
 
+.verse-ref{
+    font-weight: 700;
+    margin: auto 0;  /*  veritcal align */
+}
 
 /*Add verses section
 ***********************************************************************/
