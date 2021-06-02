@@ -142,6 +142,7 @@ body {
 }
 
 .add-form textarea{
+    max-width: 700px;
     width: 90%;
     height: 200px;
 }
@@ -168,3 +169,4 @@ body {
         width: 70vw;
         font-size: 7vw;
     }
+}
