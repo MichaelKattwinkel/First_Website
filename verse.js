@@ -8,7 +8,7 @@ class Verse {
   }
 
   getref() {
-    var ref = "";
+    let ref = "";
     ref = this.book + " " + this.chapter + " " + this.start + ":" + this.end;
     return ref;
   }
