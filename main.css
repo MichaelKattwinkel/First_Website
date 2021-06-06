@@ -1,86 +1,83 @@
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-*, *:before, *:after {
-    box-sizing: inherit;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
-    font-size: 100%;
-
+  font-size: 100%;
 }
 
-
 .dark-theme {
-    color: #ffffff;
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKJeKF7CTF422wJ0z-Ek63NceV-_3ZbwPfjsyH-i-mVHpHoXNUzlWFm_RtJysSLHTFalU&usqp=CAU);
-    background-repeat: repeat;
-    background-size: 550px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  }
+  color: #ffffff;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKJeKF7CTF422wJ0z-Ek63NceV-_3ZbwPfjsyH-i-mVHpHoXNUzlWFm_RtJysSLHTFalU&usqp=CAU);
+  background-repeat: repeat;
+  background-size: 550px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
 
 /*Top Bar
 *******************************************************************
 */
-.top-bar img{
-    float: left;
-    padding: 1vh;
-    height: 10vh;
-    width: 14vh;
-    
-}  
-  
-.top-bar h1{ /*Title*/
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 5vh;
-    padding: 1vh;
-    margin: 0px;
-    float: left;
-    position: relative;
-    left: 7px;
-}
-    
-#quote{
-    position: absolute;
-    right: 5vw;
-    font-size: 2vh;
+.top-bar img {
+  float: left;
+  padding: 1vh;
+  height: 10vh;
+  width: 14vh;
 }
 
-#quote cite{
-    position: absolute;
-    right: 3vw;
+.top-bar h1 {
+  /*Title*/
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 5vh;
+  padding: 1vh;
+  margin: 0px;
+  float: left;
+  position: relative;
+  left: 7px;
 }
 
+#quote {
+  position: absolute;
+  right: 5vw;
+  font-size: 2vh;
+}
 
+#quote cite {
+  position: absolute;
+  right: 3vw;
+}
 
-.top-bar{
-    padding: 0px;
-    margin: 0px;
-    width: 100%;
-    border-bottom: 3px groove rgb(230, 130, 0);
-    position: fixed;
-    top:0;
-    left:0;
-    z-index: 5;
-    background-color: black;
-    }
-
+.top-bar {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  border-bottom: 3px groove rgb(230, 130, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background-color: black;
+}
 
 /*Main section
 ***********************************************************************
 */
 
-.main-viewport{
-    margin: 0 auto;
-    width: 800px;
-    width: 85%;
-    position: relative;
-    top: 10vh;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    
+.main-viewport {
+  margin: 0 auto;
+  width: 800px;
+  width: 85%;
+  position: relative;
+  top: 10vh;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 /* .your-verses, .add-verses{
     max-width: 1000px;
@@ -89,84 +86,83 @@ body {
 /* Your verses section
 **********************************************************************
 */
-.verse-grid{
-    display: grid;
-    grid-auto-rows: fr fr fr fr;
-    row-gap: 20px;
+.verse-grid {
+  display: grid;
+  grid-auto-rows: fr fr fr fr;
+  row-gap: 20px;
 }
 
-.verse-item{
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    column-gap: 10px;
-  
+.verse-item {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  column-gap: 10px;
 }
 
-.verse-ref{
-    font-weight: 700;
-    margin: auto 0;  /*  veritcal align */
+.verse-ref {
+  font-weight: 700;
+  margin: auto 0; /*  veritcal align */
 }
 
 /*Add verses section
 ***********************************************************************/
-.add-form input, select, textarea, button, select *{
-    background-color: transparent;
-    border-color: rgb(230, 130, 0);
-    border-width: 2px;
-    color: white;
-    padding: 7px;
-    margin: 10px;
+.add-form input,
+select,
+textarea,
+button,
+select * {
+  background-color: transparent;
+  border-color: rgb(230, 130, 0);
+  border-width: 2px;
+  color: white;
+  padding: 7px;
+  margin: 10px;
 }
-#Version *, #Book *{
-    background-color: black;
-    }
-
-.add-form input{
-    width: 40px;
-}
-
-.add-form span{
-    white-space: nowrap;
+#Version *,
+#Book * {
+  background-color: black;
 }
 
-#middle-dash{
-    padding: 0;
+.add-form input {
+  width: 60px;
 }
 
-#Verse{
-    margin-right: 0px;
+.add-form span {
+  white-space: nowrap;
 }
 
-#dash{
-    margin-left: 0px;
+#middle-dash {
+  padding: 0;
 }
 
-.add-form textarea{
-    max-width: 700px;
-    width: 90%;
-    height: 200px;
+#Verse {
+  margin-right: 0px;
 }
 
+#dash {
+  margin-left: 0px;
+}
 
-
-
-
+.add-form textarea {
+  max-width: 700px;
+  width: 90%;
+  height: 200px;
+}
 
 /*Responsive web design*/
 @media only screen and (max-width: 1000px) {
-    #quote *{
-        position: absolute;
-        left: -2000px;
-    }
+  #quote * {
+    position: absolute;
+    left: -2000px;
+  }
 }
 
 @media only screen and (max-width: 500px) {
-    .top-bar img{
-        height: 15vw;
-        width: 20vw;
-    }
-    .top-bar h1{
-        width: 70vw;
-        font-size: 7vw;
-    }
+  .top-bar img {
+    height: 15vw;
+    width: 20vw;
+  }
+  .top-bar h1 {
+    width: 70vw;
+    font-size: 7vw;
+  }
 }
