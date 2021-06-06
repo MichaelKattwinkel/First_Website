@@ -68,12 +68,13 @@ submitButton.addEventListener(
   (event) => {
     console.log(event);
     createVerse(
-      form_status.elements[0].value, // book
-      form_status.elements[1].value, // chapter
-      form_status.elements[2].value, // start verse
-      form_status.elements[3].value, // end verse
-      form_status.elements[6].value // text
+      form_status.elements.Book.value, // book
+      form_status.elements.Chapter.value, // chapter
+      form_status.elements.Verse.value, // start verse
+      form_status.elements.dash.value, // end verse
+      form_status.elements.Text.value // text
     );
+
     updateYourVerses();
   },
   false
