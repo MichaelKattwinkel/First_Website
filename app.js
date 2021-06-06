@@ -60,6 +60,7 @@ createVerse(
 updateYourVerses();
 
 // dealing with adding verse event
+///////////////////////////////////////////////////////////////////////////////////////
 const submitButton = document.querySelector("#submitButton");
 const form_status = document.querySelector(".add-form");
 
@@ -67,15 +68,31 @@ submitButton.addEventListener(
   "click",
   (event) => {
     console.log(event);
-    createVerse(
-      form_status.elements.Book.value, // book
-      form_status.elements.Chapter.value, // chapter
-      form_status.elements.Verse.value, // start verse
-      form_status.elements.dash.value, // end verse
-      form_status.elements.Text.value // text
-    );
 
-    updateYourVerses();
+    if (form_status.elements.Chapter.value == "") {
+      console.log("error chpater is missing"); /////////////////////add message
+    } else if (form_status.elements.Verse.value == "") {
+      console.log("error verse is missing"); //////////////////////// add message
+    } else if (form_status.elements.Text.value == "") {
+      console.log("error text is missing"); /////////////////////////////// add message
+    } else if (
+      form_status.elements.dash.value < form_status.elements.Verse.value &&
+      form_status.elements.dash.value != ""
+    ) {
+      console.log("error: verse greater than verse end"); ///////////////////////// add message
+    } else {
+      if (form_status.elements.dash.value == "") {
+        form_status.elements.dash.value = form_status.elements.Verse.value; // set equal to same verse number if its not specified
+      }
+      createVerse(
+        form_status.elements.Book.value, // book
+        form_status.elements.Chapter.value, // chapter
+        form_status.elements.Verse.value, // start verse
+        form_status.elements.dash.value, // end verse
+        form_status.elements.Text.value // text
+      );
+      updateYourVerses();
+    }
   },
   false
 );
