@@ -7,10 +7,6 @@ html {
   box-sizing: inherit;
 }
 
-body {
-  font-size: 100%;
-}
-
 .dark-theme {
   color: #ffffff;
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKJeKF7CTF422wJ0z-Ek63NceV-_3ZbwPfjsyH-i-mVHpHoXNUzlWFm_RtJysSLHTFalU&usqp=CAU);
@@ -145,7 +141,12 @@ select * {
 .add-form textarea {
   max-width: 700px;
   width: 90%;
-  height: 200px;
+  height: 180px;
+}
+
+.submit-error {
+  color: red;
+  font-size: 0.8em;
 }
 
 /*Responsive web design*/

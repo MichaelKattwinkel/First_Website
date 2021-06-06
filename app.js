@@ -64,22 +64,36 @@ updateYourVerses();
 const submitButton = document.querySelector("#submitButton");
 const form_status = document.querySelector(".add-form");
 
+function sendError(message) {
+  let new_error = document.createElement("p");
+  new_error.classList.add("submit-error");
+  new_error.innerHTML = message;
+  form_status.insertBefore(new_error, submitButton);
+}
+
 submitButton.addEventListener(
   "click",
   (event) => {
     console.log(event);
+    //delete current error message
+    let err_msg_node = document.querySelector(".submit-error");
+    if (err_msg_node != null) {
+      form_status.removeChild(err_msg_node);
+    }
+
+    // send error message or add verse
 
     if (form_status.elements.Chapter.value == "") {
-      console.log("error chpater is missing"); /////////////////////add message
+      sendError("Please enter a chapter");
     } else if (form_status.elements.Verse.value == "") {
-      console.log("error verse is missing"); //////////////////////// add message
+      sendError("Please enter a verse"); //////////////////////// add message
     } else if (form_status.elements.Text.value == "") {
-      console.log("error text is missing"); /////////////////////////////// add message
+      sendError("Please enter text"); /////////////////////////////// add message
     } else if (
       form_status.elements.dash.value < form_status.elements.Verse.value &&
       form_status.elements.dash.value != ""
     ) {
-      console.log("error: verse greater than verse end"); ///////////////////////// add message
+      sendError("Error: verse greater than verse end"); ///////////////////////// add message
     } else {
       if (form_status.elements.dash.value == "") {
         form_status.elements.dash.value = form_status.elements.Verse.value; // set equal to same verse number if its not specified
