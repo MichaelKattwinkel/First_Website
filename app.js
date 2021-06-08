@@ -28,11 +28,21 @@ function updateYourVerses() {
   verses.forEach((element) => {
     let newVerse = document.createElement("section");
     newVerse.classList.add("verse-item");
+    let new_class = "verse-number-" + element.id_num;
+    newVerse.classList.add(new_class); // used to link button and verse
     let content = `
     <div class="verse-ref"> ${element.getref()} </div>
     <div class="verse-text"> ${element.text}</div>
+    <button name= ${new_class}>Delete</button>
 `;
     newVerse.innerHTML = content;
+
+    // delete button event listener
+    const button = newVerse.querySelector("button");
+    button.addEventListener("click", () => {
+      deleteVerse(element.id_num);
+    });
+
     verseGrid.prepend(newVerse);
   });
 
@@ -86,14 +96,14 @@ submitButton.addEventListener(
     if (form_status.elements.Chapter.value == "") {
       sendError("Please enter a chapter");
     } else if (form_status.elements.Verse.value == "") {
-      sendError("Please enter a verse"); //////////////////////// add message
+      sendError("Please enter a verse");
     } else if (form_status.elements.Text.value == "") {
-      sendError("Please enter text"); /////////////////////////////// add message
+      sendError("Please enter text");
     } else if (
       form_status.elements.dash.value < form_status.elements.Verse.value &&
       form_status.elements.dash.value != ""
     ) {
-      sendError("Error: verse greater than verse end"); ///////////////////////// add message
+      sendError("Error: verse greater than verse end");
     } else {
       if (form_status.elements.dash.value == "") {
         form_status.elements.dash.value = form_status.elements.Verse.value; // set equal to same verse number if its not specified
@@ -114,3 +124,11 @@ submitButton.addEventListener(
   },
   false
 );
+
+/////////////////////////////////////////////////////////////////////
+// Delete verse event
+/////////////////////////////////////////////////////////////////////
+function deleteVerse(verse_id_number) {
+  verses = verses.filter((i) => i.id_num != verse_id_number);
+  updateYourVerses();
+}

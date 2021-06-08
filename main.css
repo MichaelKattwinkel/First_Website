@@ -90,13 +90,18 @@ html {
 
 .verse-item {
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 5fr 1fr;
   column-gap: 10px;
 }
 
 .verse-ref {
   font-weight: 700;
   margin: auto 0; /*  veritcal align */
+}
+
+.verse-item button,
+.verse-text {
+  margin: auto 0;
 }
 
 /*Add verses section

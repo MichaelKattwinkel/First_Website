@@ -1,3 +1,5 @@
+var verse_id_number = 0; //global variable for verse tracking
+
 class Verse {
   constructor(book, chapter, start, end, text) {
     this.book = book;
@@ -5,6 +7,8 @@ class Verse {
     this.start = start;
     this.end = end;
     this.text = text;
+    this.id_num = verse_id_number;
+    verse_id_number++;
   }
 
   getref() {
