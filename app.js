@@ -64,12 +64,12 @@ updateYourVerses();
 const submitButton = document.querySelector("#submitButton");
 const form_status = document.querySelector(".add-form");
 
-function sendError(message) {
+const sendError = function (message) {
   let new_error = document.createElement("p");
   new_error.classList.add("submit-error");
   new_error.innerHTML = message;
   form_status.insertBefore(new_error, submitButton);
-}
+};
 
 submitButton.addEventListener(
   "click",
@@ -106,6 +106,10 @@ submitButton.addEventListener(
         form_status.elements.Text.value // text
       );
       updateYourVerses();
+
+      form_status.elements.Verse.value = ""; // start verse
+      form_status.elements.dash.value = ""; // end verse
+      form_status.elements.Text.value = ""; // text
     }
   },
   false
