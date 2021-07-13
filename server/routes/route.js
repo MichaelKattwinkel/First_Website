@@ -1,3 +1,4 @@
+const ObjectID = require('mongodb').ObjectID;
 module.exports = function(app, db) {
     // create
 app.post('/verses', (req, res) => {  
@@ -26,4 +27,20 @@ app.post('/verses', (req, res) => {
         res.send({'error': "Missing one or more feilds"})
     }
 });
+    //read
+    app.get('/verses', (req, res) => {
+        const username = req.headers.user;
+        //console.log(username);
+        const query = { user: username}
+        //console.log(query);
+        db.collection('verses').find(query).toArray( (err, items) => {
+            if (err){
+                res.send({'error': 'An error has occured'});
+            }
+            else{
+                res.send(items);
+            }
+        });
+        })
 }
+
