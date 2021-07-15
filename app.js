@@ -1,21 +1,68 @@
 import Verse from "./verse.js";
+import post from "./post.js";
 
-// create array of verses
-// every time its changed add the whole array to the html file
+const username = 'user54'
 
-let verses = [];
+//ADD VERSE
+//////////////////////////////////////////////////////////////////////////////////////////
+const submitButton = document.querySelector("#submitButton");
+const form_status = document.querySelector(".add-form");
 
-/**
- * adds a new verse object to the list
- * @param {string} book
- * @param {number} chapter
- * @param {number} start
- * @param {number} end
- * @param {string} text
- */
-function createVerse(book, chapter, start, end, text) {
-  verses[verses.length] = new Verse(book, chapter, start, end, text);
-}
+const sendError = function (message) {
+  let new_error = document.createElement("p");
+  new_error.classList.add("submit-error");
+  new_error.innerHTML = message;
+  form_status.insertBefore(new_error, submitButton);
+};
+
+submitButton.addEventListener(
+  "click",
+  (event) => {
+    console.log(event);
+    //delete current error message
+    let err_msg_node = document.querySelector(".submit-error");
+    if (err_msg_node != null) {
+      form_status.removeChild(err_msg_node);
+    }
+
+    // send error message or add verse
+
+    if (form_status.elements.Chapter.value == "") {
+      sendError("Please enter a chapter");
+    } else if (form_status.elements.Verse.value == "") {
+      sendError("Please enter a verse");
+    } else if (form_status.elements.Text.value == "") {
+      sendError("Please enter text");
+    } else if (
+      form_status.elements.dash.value < form_status.elements.Verse.value &&
+      form_status.elements.dash.value != ""
+    ) {
+      sendError("Error: verse greater than verse end");
+    } else {
+      if (form_status.elements.dash.value == "") {
+        form_status.elements.dash.value = form_status.elements.Verse.value; // set equal to same verse number if its not specified
+      }
+      const newVerse = new Verse(
+        form_status.elements.Book.value, // book
+        form_status.elements.Chapter.value, // chapter
+        form_status.elements.Verse.value, // start verse
+        form_status.elements.dash.value, // end verse
+        form_status.elements.Text.value // text
+      );
+      post(username, newVerse);
+      
+      form_status.elements.Verse.value = ""; // start verse
+      form_status.elements.dash.value = ""; // end verse
+      form_status.elements.Text.value = ""; // text
+    }
+  },
+  false
+);
+
+
+//READ VERSES
+//////////////////////////////////////////////////////////////////////////////////////////
+let verses = []; //temporary storage for users verses
 
 /**
  * clears the verse grid and fills it with the current array
@@ -54,84 +101,5 @@ function updateYourVerses() {
   }
 }
 
-createVerse(
-  "Romans",
-  8,
-  1,
-  1,
-  "Therefore there is now no condemnation for those in Christ Jesus."
-);
-
-createVerse(
-  "Proverbs",
-  3,
-  5,
-  6,
-  "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him and he will make your paths straight."
-);
-
-updateYourVerses();
-
-// dealing with adding verse event
-///////////////////////////////////////////////////////////////////////////////////////
-const submitButton = document.querySelector("#submitButton");
-const form_status = document.querySelector(".add-form");
-
-const sendError = function (message) {
-  let new_error = document.createElement("p");
-  new_error.classList.add("submit-error");
-  new_error.innerHTML = message;
-  form_status.insertBefore(new_error, submitButton);
-};
-
-submitButton.addEventListener(
-  "click",
-  (event) => {
-    console.log(event);
-    //delete current error message
-    let err_msg_node = document.querySelector(".submit-error");
-    if (err_msg_node != null) {
-      form_status.removeChild(err_msg_node);
-    }
-
-    // send error message or add verse
-
-    if (form_status.elements.Chapter.value == "") {
-      sendError("Please enter a chapter");
-    } else if (form_status.elements.Verse.value == "") {
-      sendError("Please enter a verse");
-    } else if (form_status.elements.Text.value == "") {
-      sendError("Please enter text");
-    } else if (
-      form_status.elements.dash.value < form_status.elements.Verse.value &&
-      form_status.elements.dash.value != ""
-    ) {
-      sendError("Error: verse greater than verse end");
-    } else {
-      if (form_status.elements.dash.value == "") {
-        form_status.elements.dash.value = form_status.elements.Verse.value; // set equal to same verse number if its not specified
-      }
-      createVerse(
-        form_status.elements.Book.value, // book
-        form_status.elements.Chapter.value, // chapter
-        form_status.elements.Verse.value, // start verse
-        form_status.elements.dash.value, // end verse
-        form_status.elements.Text.value // text
-      );
-      updateYourVerses();
-
-      form_status.elements.Verse.value = ""; // start verse
-      form_status.elements.dash.value = ""; // end verse
-      form_status.elements.Text.value = ""; // text
-    }
-  },
-  false
-);
-
-/////////////////////////////////////////////////////////////////////
-// Delete verse event
-/////////////////////////////////////////////////////////////////////
-function deleteVerse(verse_id_number) {
-  verses = verses.filter((i) => i.id_num != verse_id_number);
-  updateYourVerses();
-}
+//DELETE VERSE
+////////////////////////////////////////////////////////////////////////////////////////////
