@@ -11,6 +11,8 @@ app.post('/verses', (req, res) => {
         text: req.body.text 
     };
     //make sure no fields are empty
+    //res.headers.append('Access-Control-Allow-Origin', '*');
+    //res.headers.append('Access-Control-Allow-Credentials', 'true');
     if(verse.user && verse.book && verse.chapter && verse.start && verse.end && verse.text){ 
         //adds to database
         db.collection('verses').insertOne(verse, (err, result) => {
@@ -21,7 +23,7 @@ app.post('/verses', (req, res) => {
             res.send(result.ops[0]);
         }
     });
-    console.log(req.body)
+    
 }
     else{
         res.send({'error': "Missing one or more feilds"})
@@ -30,7 +32,7 @@ app.post('/verses', (req, res) => {
     //read
     app.get('/verses', (req, res) => {
         const username = req.headers.user;
-        //console.log(username);
+        console.log(username);
         const query = { user: username}
         //console.log(query);
         db.collection('verses').find(query).toArray( (err, items) => {

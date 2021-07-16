@@ -1,5 +1,6 @@
 import Verse from "./verse.js";
 import post from "./post.js";
+import getData from "./get.js";
 
 const username = 'user54'
 
@@ -63,6 +64,8 @@ submitButton.addEventListener(
 //READ VERSES
 //////////////////////////////////////////////////////////////////////////////////////////
 let verses = []; //temporary storage for users verses
+
+getData('http://localhost:7000/verses', 'user1');
 
 /**
  * clears the verse grid and fills it with the current array
