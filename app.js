@@ -2,59 +2,62 @@ import Verse from "./verse.js";
 import post from "./post.js";
 import get from "./get.js";
 
-const username = 'user1'
+var USERNAME = 'user1'
 
 //ADD VERSE
 //////////////////////////////////////////////////////////////////////////////////////////
 const submitButton = document.querySelector("#submitButton");
-const form_status = document.querySelector(".add-form");
+const formStatus = document.querySelector(".add-form");
 
+/**
+ * Sends an error message above the submit button
+ * @param {string} message 
+ */
 const sendError = function (message) {
   let new_error = document.createElement("p");
-  new_error.classList.add("submit-error");
+  new_error.classList.add("submit-error"); // allows for seperate styling
   new_error.innerHTML = message;
-  form_status.insertBefore(new_error, submitButton);
+  formStatus.insertBefore(new_error, submitButton);
 };
 
 submitButton.addEventListener(
   "click",
   (event) => {
-    console.log(event);
     //delete current error message
     let err_msg_node = document.querySelector(".submit-error");
     if (err_msg_node != null) {
-      form_status.removeChild(err_msg_node);
+      formStatus.removeChild(err_msg_node);
     }
 
     // send error message or add verse
-
-    if (form_status.elements.Chapter.value == "") {
+    if (formStatus.elements.Chapter.value == "") {
       sendError("Please enter a chapter");
-    } else if (form_status.elements.Verse.value == "") {
+    } else if (formStatus.elements.Verse.value == "") {
       sendError("Please enter a verse");
-    } else if (form_status.elements.Text.value == "") {
+    } else if (formStatus.elements.Text.value == "") {
       sendError("Please enter text");
     } else if (
-      form_status.elements.dash.value < form_status.elements.Verse.value &&
-      form_status.elements.dash.value != ""
+      formStatus.elements.dash.value < formStatus.elements.Verse.value &&
+      formStatus.elements.dash.value != ""
     ) {
-      sendError("Error: verse greater than verse end");
+      sendError("Error: verse start greater than verse end");
     } else {
-      if (form_status.elements.dash.value == "") {
-        form_status.elements.dash.value = form_status.elements.Verse.value; // set equal to same verse number if its not specified
+      if (formStatus.elements.dash.value == "") {
+        formStatus.elements.dash.value = formStatus.elements.Verse.value; // set verse start and end equal if not specified
       }
       const newVerse = new Verse(
-        form_status.elements.Book.value, // book
-        form_status.elements.Chapter.value, // chapter
-        form_status.elements.Verse.value, // start verse
-        form_status.elements.dash.value, // end verse
-        form_status.elements.Text.value // text
+        formStatus.elements.Book.value, 
+        formStatus.elements.Chapter.value, 
+        formStatus.elements.Verse.value, 
+        formStatus.elements.dash.value, // end verse
+        formStatus.elements.Text.value 
       );
-      post(username, newVerse);
+      post(USERNAME, newVerse); // sends a post request to the server
       
-      form_status.elements.Verse.value = ""; // start verse
-      form_status.elements.dash.value = ""; // end verse
-      form_status.elements.Text.value = ""; // text
+      //clears certain elements in the form
+      formStatus.elements.Verse.value = ""; 
+      formStatus.elements.dash.value = ""; 
+      formStatus.elements.Text.value = "";
     }
   },
   false
@@ -66,10 +69,10 @@ submitButton.addEventListener(
 updateYourVerses();
 
 /**
- * clears the verse grid and fills it with the current array
+ * clears the verse grid and fills it with the users verses
  */
 function updateYourVerses(){
-  const verses = get('http://localhost:7000/verses', username).then((data=> {
+  const verses = get('http://localhost:7000/verses', USERNAME).then((data=> {
     updateYourVerses2(data);
   }));
 }
@@ -92,7 +95,8 @@ function updateYourVerses2(data) {
     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
     <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
   </svg></button>
-`;
+`; // svg for delete button
+
     newVerse.innerHTML = content;
 
     // delete button event listener
@@ -112,5 +116,5 @@ function updateYourVerses2(data) {
 //DELETE VERSE
 ////////////////////////////////////////////////////////////////////////////////////////////
 function deleteVerse(id){
-  let a =1;
+  //pass
 }
