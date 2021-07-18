@@ -44,5 +44,21 @@ app.post('/verses', (req, res) => {
             }
         });
         })
+    
+    //delete
+    app.delete('/verses/:id', (req, res) => {
+        const id = req.params.id;
+        console.log(id);
+        const query = { _id : new ObjectID(id) };
+        db.collection('verses').deleteMany(query, (err, item) => {
+            if (err){
+                res.send({'error': 'An error has occured'});
+            }
+            else {
+                res.send('Verse id: '+ id + ' deleted!');
+            }
+        })
+        
+    })
 }
 
