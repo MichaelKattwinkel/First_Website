@@ -71,14 +71,57 @@ html {
   width: 85%;
   position: relative;
   top: 10vh;
-  display: flex;
-  flex-direction: column;
   gap: 30px;
 }
-/* .your-verses, .add-verses{
-    max-width: 1000px;
-    width: 85%;
-} */
+
+/*User section
+***********************************************************************
+*/
+.user {
+  width: 6vw;
+  position: fixed;
+  top: 13vh;
+  left: 1 vw;
+  overflow-wrap:break-word;
+  text-align: center;
+  z-index: 9;
+}
+.username {
+  margin: 2px;
+}
+.login {
+  position:absolute;
+  left: 7vw;
+  top: 12vh;
+  z-index: 10;
+  width: 40vh;
+  height: 20vh;
+  background-color: black;
+  border-color: rgb(230, 130, 0);
+  border-style: solid;
+  border-width: 2px;
+}
+.login label {
+  position: relative;
+  top: 3vh;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.login input {
+  background-color: transparent;
+  border-color: rgb(230, 130, 0);
+  color: white;
+  padding: 7px;
+  margin: 10px;
+  position: relative;
+  bottom: 2vh;
+}
+.login button {
+  position: relative;
+  bottom: 2vh;
+}
+
 /* Your verses section
 **********************************************************************
 */

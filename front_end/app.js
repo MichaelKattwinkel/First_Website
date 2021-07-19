@@ -3,7 +3,7 @@ import post from "./post.js";
 import get from "./get.js";
 import deleteRequest from "./delete.js";
 
-var USERNAME = 'user1';
+var USERNAME = null;
 
 //ADD VERSE
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -120,3 +120,37 @@ function updateYourVerses2(data) {
 function deleteVerse(id){
   deleteRequest('http://localhost:7000/verses', id).then(updateYourVerses())
 }
+
+// LOG IN
+////////////////////////////////////////////////////////////////////
+const userButton = document.querySelector(".user");
+userButton.addEventListener("click", () => {
+  
+  if (USERNAME == null){
+    //log in
+    let login = document.createElement("div");
+    login.classList.add("login");
+    let content = `
+    
+    <label>Username:<label>
+    <div><input></div>
+    <button type=button id="loginButton">log in</button>
+    `;
+    login.innerHTML = content;
+    document.querySelector(".dark-theme").prepend(login); //injects
+
+    //log in button
+    const loginButton = login.querySelector("#loginButton");
+    loginButton.addEventListener("click", () => {
+      USERNAME = login.querySelector("input").value;
+      if (USERNAME == '') { USERNAME = null}
+      userButton.querySelector("p").innerHTML = (USERNAME == null) ? "Log in" : USERNAME; //updates side bar
+      login.remove(); //removes the prompt from the screen
+      updateYourVerses();
+    })
+  }
+  else {
+    console.log(USERNAME)
+  }
+  
+})
