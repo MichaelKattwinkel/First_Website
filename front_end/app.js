@@ -1,8 +1,9 @@
 import Verse from "./verse.js";
 import post from "./post.js";
 import get from "./get.js";
+import deleteRequest from "./delete.js";
 
-var USERNAME = 'user1'
+var USERNAME = 'user1';
 
 //ADD VERSE
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +53,7 @@ submitButton.addEventListener(
         formStatus.elements.dash.value, // end verse
         formStatus.elements.Text.value 
       );
-      post(USERNAME, newVerse); // sends a post request to the server
+      post(USERNAME, newVerse).then(updateYourVerses()) // sends a post request to the server
       
       //clears certain elements in the form
       formStatus.elements.Verse.value = ""; 
@@ -102,7 +103,7 @@ function updateYourVerses2(data) {
     // delete button event listener
     const button = newVerse.querySelector("button");
     button.addEventListener("click", () => {
-      deleteVerse(e.id);
+      deleteVerse(e._id);
     });
 
     verseGrid.prepend(newVerse);
@@ -115,6 +116,7 @@ function updateYourVerses2(data) {
 
 //DELETE VERSE
 ////////////////////////////////////////////////////////////////////////////////////////////
+
 function deleteVerse(id){
-  //pass
+  deleteRequest('http://localhost:7000/verses', id).then(updateYourVerses())
 }

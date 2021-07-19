@@ -18,7 +18,7 @@ async function postData(url ='', Verse = {}, username) {
  * @param {string} username 
  * @param {Object} Verse - instance of the Verse class
  */
-const post = (username, Verse) => {
+async function post(username, Verse){
     postData('http://localhost:7000/verses', Verse, username)
 }
 export default post;
