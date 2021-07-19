@@ -148,6 +148,18 @@ userButton.addEventListener("click", () => {
       login.remove(); //removes the prompt from the screen
       updateYourVerses();
     })
+    document.addEventListener("keypress", (e) => {
+      if (e.key == "Enter"){
+      USERNAME = login.querySelector("input").value;
+      if (USERNAME == '') { USERNAME = null}
+      userButton.querySelector("p").innerHTML = (USERNAME == null) ? "Log in" : USERNAME; //updates side bar
+      login.remove(); //removes the prompt from the screen
+      updateYourVerses();
+      }
+    })
+
+
+
     
     //click outside the login screen
     document.addEventListener('click', (event) => {
