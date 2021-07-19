@@ -152,14 +152,32 @@ userButton.addEventListener("click", () => {
     //click outside the login screen
     document.addEventListener('click', (event) => {
       if (!login.contains(event.target) && !userButton.contains(event.target)){
-        console.log('yo');
         login.remove();
       }
     })
     
   }
   else {
-    console.log(USERNAME)
+    if(document.querySelector(".logout")== null){
+      
+    let logout = userButton.appendChild(document.createElement("button"));
+    logout.classList.add("logout")
+    logout.innerHTML = "Logout";
+    logout.addEventListener("click", () => {
+      USERNAME = null;
+      userButton.querySelector("p").innerHTML = "Log In"; //updates side bar
+      logout.remove();
+      updateYourVerses();
+    })
+
+    //click outsite logout button
+    document.addEventListener('click', (event) => {
+      if (!logout.contains(event.target) && !userButton.contains(event.target)){
+        logout.remove();
+      }
+    })
+  }
+
   }
   
 })

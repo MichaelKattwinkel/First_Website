@@ -121,6 +121,9 @@ html {
   position: relative;
   bottom: 2vh;
 }
+.logout {
+  margin: 8px auto;
+}
 
 /* Your verses section
 **********************************************************************
