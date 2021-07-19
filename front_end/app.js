@@ -148,6 +148,15 @@ userButton.addEventListener("click", () => {
       login.remove(); //removes the prompt from the screen
       updateYourVerses();
     })
+    
+    //click outside the login screen
+    document.addEventListener('click', (event) => {
+      if (!login.contains(event.target) && !userButton.contains(event.target)){
+        console.log('yo');
+        login.remove();
+      }
+    })
+    
   }
   else {
     console.log(USERNAME)
